@@ -1,0 +1,253 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Light Theme Color Tokens (RGB values for Tailwind opacity support) */
+  --bg-base: 248 250 252;
+  --text-base: 15 23 42;
+  --navy-950: 248 250 252;
+  --navy-900: 241 245 249;
+  --navy-800: 255 255 255;
+  --navy-700: 226 232 240;
+  --navy-600: 203 213 225;
+  --ink: 15 23 42;
+  --mist: 71 85 105;
+  --mist2: 100 116 139;
+  --paper: 255 255 255;
+  --bg-glass: rgba(255, 255, 255, 0.85);
+  --border-glass: rgba(0, 112, 243, 0.14);
+  --shadow-glass: 0 10px 30px -5px rgba(0, 85, 214, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+}
+
+.dark {
+  /* Dark Theme Color Tokens */
+  --bg-base: 4 6 12;
+  --text-base: 247 248 251;
+  --navy-950: 4 6 12;
+  --navy-900: 8 11 20;
+  --navy-800: 14 19 32;
+  --navy-700: 22 29 46;
+  --navy-600: 33 42 64;
+  --ink: 8 11 20;
+  --mist: 139 148 172;
+  --mist2: 90 100 128;
+  --paper: 247 248 251;
+  --bg-glass: rgba(14, 19, 32, 0.55);
+  --border-glass: rgba(56, 189, 248, 0.14);
+  --shadow-glass: none;
+}
+
+* {
+  scroll-behavior: auto;
+}
+
+html.lenis {
+  height: auto;
+}
+
+html.lenis body {
+  min-height: 100vh;
+}
+
+body {
+  background-color: rgb(var(--bg-base));
+  color: rgb(var(--text-base));
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+::selection {
+  background: #0070f3;
+  color: #ffffff;
+}
+
+/* Focus visibility for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* -- reusable design-system utility classes -- */
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #0070f3;
+}
+
+.dark .eyebrow {
+  color: #38bdf8;
+}
+
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-glass);
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pixel-grid {
+  background-image: var(--tw-gradient-hac-grid, none);
+}
+
+.hac-arc {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+.hac-arc.in-view {
+  animation: arc-draw 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes arc-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #0f172a 0%, #0055d6 50%, #0070f3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.dark .text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #38bdf8 50%, #0070f3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-pad {
+  padding-top: clamp(4rem, 8vw, 7rem);
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+/* Light mode overrides for contrast & borders */
+html:not(.dark) {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/* Light mode border adaptations */
+html:not(.dark) .border-white\/5 {
+  border-color: rgba(15, 23, 42, 0.05);
+}
+html:not(.dark) .border-white\/10 {
+  border-color: rgba(15, 23, 42, 0.08);
+}
+html:not(.dark) .border-white\/15 {
+  border-color: rgba(15, 23, 42, 0.12);
+}
+html:not(.dark) .hover\:border-white\/10:hover {
+  border-color: rgba(15, 23, 42, 0.15);
+}
+html:not(.dark) .hover\:border-blue-400\/50:hover,
+html:not(.dark) .hover\:border-blue-400\/40:hover,
+html:not(.dark) .hover\:border-blue-400\/60:hover {
+  border-color: rgba(0, 112, 243, 0.5);
+}
+
+/* Light mode hover backgrounds */
+html:not(.dark) .hover\:bg-white\/5:hover {
+  background-color: rgba(15, 23, 42, 0.04);
+}
+
+/* Headings and text in light mode */
+html:not(.dark) h1.text-white,
+html:not(.dark) h2.text-white,
+html:not(.dark) h3.text-white,
+html:not(.dark) h4.text-white,
+html:not(.dark) p.text-white,
+html:not(.dark) span.text-white:not(.bg-hac-gradient *):not(.bg-\[\#25D366\] *),
+html:not(.dark) a.text-white:not(.bg-hac-gradient *):not(.bg-\[\#25D366\] *),
+html:not(.dark) button.text-white:not(.bg-hac-gradient *):not(.bg-\[\#25D366\] *) {
+  color: #0f172a;
+}
+
+html:not(.dark) .hover\:text-white:hover {
+  color: #0f172a;
+}
+
+/* Keep pure white on colored / gradient elements */
+html:not(.dark) .bg-hac-gradient,
+html:not(.dark) .bg-hac-gradient *,
+html:not(.dark) [class*="bg-hac-gradient"] *,
+html:not(.dark) .bg-\[\#25D366\],
+html:not(.dark) .bg-\[\#25D366\] *,
+html:not(.dark) [data-theme-keep="white"] {
+  color: #ffffff !important;
+}
+
+/* Outline button in light mode */
+html:not(.dark) button.border-white\/15,
+html:not(.dark) a.border-white\/15 {
+  color: #0f172a;
+  border-color: rgba(15, 23, 42, 0.16);
+}
+html:not(.dark) button.border-white\/15:hover,
+html:not(.dark) a.border-white\/15:hover {
+  background-color: rgba(15, 23, 42, 0.04);
+  color: #0055d6;
+}
+
+/* Light mode high-contrast adaptations for blue elements */
+html:not(.dark) .text-blue-300,
+html:not(.dark) .text-blue-400 {
+  color: #0055d6;
+}
+html:not(.dark) .hover\:text-blue-200:hover,
+html:not(.dark) .hover\:text-blue-300:hover {
+  color: #0040b0;
+}
+html:not(.dark) .bg-blue-500\/10 {
+  background-color: rgba(0, 85, 214, 0.08);
+}
+html:not(.dark) .bg-blue-500\/10 .text-blue-400,
+html:not(.dark) .bg-blue-500\/20 .text-blue-400 {
+  color: #0055d6;
+}
+html:not(.dark) .group:hover .group-hover\:bg-blue-500\/20 {
+  background-color: rgba(0, 85, 214, 0.14);
+}
+html:not(.dark) .eyebrow {
+  color: #0055d6;
+  font-weight: 600;
+}
+
+/* Form input elements in light mode */
+html:not(.dark) input,
+html:not(.dark) textarea,
+html:not(.dark) select {
+  color: #0f172a;
+}
