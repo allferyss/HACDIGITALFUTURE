@@ -46,6 +46,7 @@ export function Footer() {
             <p className="eyebrow mb-4">Perusahaan</p>
             <ul className="space-y-2.5">
               <li><Link href="/tentang" className="text-sm text-mist hover:text-white">Tentang Kami</Link></li>
+              <li><Link href="/katalog" className="text-sm text-mist hover:text-white">Katalog Alat & Material</Link></li>
               <li><Link href="/portfolio" className="text-sm text-mist hover:text-white">Portofolio</Link></li>
               <li><Link href="/artikel" className="text-sm text-mist hover:text-white">Artikel</Link></li>
               <li><Link href="/kontak" className="text-sm text-mist hover:text-white">Kontak</Link></li>

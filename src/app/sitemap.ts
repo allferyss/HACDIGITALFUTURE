@@ -4,7 +4,7 @@ import { services } from "@/lib/services-data";
 import { articles } from "@/lib/articles-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/layanan", "/tentang", "/artikel", "/kontak", "/portfolio"].map((route) => ({
+  const staticRoutes = ["", "/layanan", "/katalog", "/tentang", "/artikel", "/kontak", "/portfolio"].map((route) => ({
     url: `${siteConfig.url}${route}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,

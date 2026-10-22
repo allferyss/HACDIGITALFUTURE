@@ -32,6 +32,7 @@ export const siteConfig = {
 export const navItems = [
   { label: "Home", href: "/" },
   { label: "Layanan", href: "/layanan", megaMenu: true },
+  { label: "Katalog Alat", href: "/katalog" },
   { label: "Tentang Kami", href: "/tentang" },
   { label: "Artikel", href: "/artikel" },
   { label: "Kontak", href: "/kontak" },

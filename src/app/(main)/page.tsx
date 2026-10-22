@@ -3,6 +3,7 @@ import { Trusted } from "@/components/sections/home/trusted";
 import { Stats } from "@/components/sections/home/stats";
 import { WhyUs } from "@/components/sections/home/why-us";
 import { ServicesGrid } from "@/components/sections/home/services-grid";
+import { ToolsShowcase } from "@/components/sections/home/tools-showcase";
 import { Process } from "@/components/sections/home/process";
 import { Portfolio } from "@/components/sections/home/portfolio";
 import { Testimonials } from "@/components/sections/home/testimonials";
@@ -18,6 +19,7 @@ export default function HomePage() {
       <Stats />
       <WhyUs />
       <ServicesGrid />
+      <ToolsShowcase />
       <Process />
       <Portfolio />
       <Testimonials />
